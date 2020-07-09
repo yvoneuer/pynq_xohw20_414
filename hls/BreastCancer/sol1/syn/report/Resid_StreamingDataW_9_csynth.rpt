@@ -1,0 +1,172 @@
+
+
+================================================================
+== Vivado HLS Report for 'Resid_StreamingDataW_9'
+================================================================
+* Date:           Tue Jul  7 16:27:59 2020
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        CIFAR10
+* Solution:       sol1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|     4.375|        0.62|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  1027|  1027|  1027|  1027|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+------+------+----------+-----------+-----------+------+----------+
+        |          |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |  1025|  1025|         4|          2|          1|   512|    yes   |
+        +----------+------+------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|     96|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|    132|
+|Register         |        -|      -|     284|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|     284|    228|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |i_7_fu_124_p2                     |     +    |      0|  0|  39|          32|           1|
+    |t_2_fu_115_p2                     |     +    |      0|  0|  14|          10|           1|
+    |ap_block_pp0_stage0_01001         |    and   |      0|  0|   2|           1|           1|
+    |ap_block_pp0_stage1_01001         |    and   |      0|  0|   2|           1|           1|
+    |exitcond_fu_109_p2                |   icmp   |      0|  0|  13|          10|          11|
+    |tmp_s_fu_130_p2                   |   icmp   |      0|  0|  18|          32|           7|
+    |ap_block_state1                   |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter1  |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state5_pp0_stage1_iter1  |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |    xor   |      0|  0|   2|           1|           2|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0|  96|          90|          27|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------+----+-----------+-----+-----------+
+    |            Name           | LUT| Input Size| Bits| Total Bits|
+    +---------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                  |  27|          5|    1|          5|
+    |ap_done                    |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1    |   9|          2|    1|          2|
+    |ap_phi_mux_t_phi_fu_97_p4  |   9|          2|   10|         20|
+    |eo_V_0_s_reg_81            |   9|          2|   63|        126|
+    |eo_V_1_s_reg_69            |   9|          2|   63|        126|
+    |i_fu_52                    |   9|          2|   32|         64|
+    |in_V_V_blk_n               |   9|          2|    1|          2|
+    |out_V_V_blk_n              |   9|          2|    1|          2|
+    |out_V_V_din                |  15|          3|   64|        192|
+    |real_start                 |   9|          2|    1|          2|
+    |t_reg_93                   |   9|          2|   10|         20|
+    +---------------------------+----+-----------+-----+-----------+
+    |Total                      | 132|         28|  248|        563|
+    +---------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------+----+----+-----+-----------+
+    |              Name              | FF | LUT| Bits| Const Bits|
+    +--------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                       |   4|   0|    4|          0|
+    |ap_done_reg                     |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0         |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1         |   1|   0|    1|          0|
+    |eo_V_0_s_reg_81                 |  63|   0|   63|          0|
+    |eo_V_1_s_reg_69                 |  63|   0|   63|          0|
+    |exitcond_reg_198                |   1|   0|    1|          0|
+    |exitcond_reg_198_pp0_iter1_reg  |   1|   0|    1|          0|
+    |i_7_reg_207                     |  32|   0|   32|          0|
+    |i_fu_52                         |  32|   0|   32|          0|
+    |start_once_reg                  |   1|   0|    1|          0|
+    |t_2_reg_202                     |  10|   0|   10|          0|
+    |t_reg_93                        |  10|   0|   10|          0|
+    |tmp_153_reg_222                 |  62|   0|   62|          0|
+    |tmp_V_reg_217                   |   1|   0|    1|          0|
+    |tmp_s_reg_213                   |   1|   0|    1|          0|
+    +--------------------------------+----+----+-----+-----------+
+    |Total                           | 284|   0|  284|          0|
+    +--------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------+-----+-----+------------+------------------------+--------------+
+|    RTL Ports   | Dir | Bits|  Protocol  |      Source Object     |    C Type    |
++----------------+-----+-----+------------+------------------------+--------------+
+|ap_clk          |  in |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_rst          |  in |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_start        |  in |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|start_full_n    |  in |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_done         | out |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_continue     |  in |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_idle         | out |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|ap_ready        | out |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|start_out       | out |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|start_write     | out |    1| ap_ctrl_hs | Resid_StreamingDataW.9 | return value |
+|in_V_V_dout     |  in |    1|   ap_fifo  |         in_V_V         |    pointer   |
+|in_V_V_empty_n  |  in |    1|   ap_fifo  |         in_V_V         |    pointer   |
+|in_V_V_read     | out |    1|   ap_fifo  |         in_V_V         |    pointer   |
+|out_V_V_din     | out |   64|   ap_fifo  |         out_V_V        |    pointer   |
+|out_V_V_full_n  |  in |    1|   ap_fifo  |         out_V_V        |    pointer   |
+|out_V_V_write   | out |    1|   ap_fifo  |         out_V_V        |    pointer   |
++----------------+-----+-----+------------+------------------------+--------------+
+

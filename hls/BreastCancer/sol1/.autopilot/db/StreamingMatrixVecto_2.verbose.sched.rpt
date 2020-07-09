@@ -1,0 +1,446 @@
+
+
+================================================================
+== Vivado HLS Report for 'StreamingMatrixVecto_2'
+================================================================
+* Date:           Tue Jul  7 16:25:02 2020
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        CIFAR10
+* Solution:       sol1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|     3.950|        0.62|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-------+-------+-------+-------+---------+
+    |    Latency    |    Interval   | Pipeline|
+    |  min  |  max  |  min  |  max  |   Type  |
+    +-------+-------+-------+-------+---------+
+    |  65557|  65557|  65557|  65557|   none  |
+    +-------+-------+-------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-------+-------+----------+-----------+-----------+-------+----------+
+        |          |    Latency    | Iteration|  Initiation Interval  |  Trip |          |
+        | Loop Name|  min  |  max  |  Latency |  achieved |   target  | Count | Pipelined|
+        +----------+-------+-------+----------+-----------+-----------+-------+----------+
+        |- Loop 1  |      2|      2|         1|          -|          -|      2|    no    |
+        |- Loop 2  |  65552|  65552|        19|          2|          1|  32768|    yes   |
+        +----------+-------+-------+----------+-----------+-----------+-------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 2, depth = 19
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 22
+* Pipeline : 1
+  Pipeline-0 : II = 2, D = 19, States = { 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	2  / (!tmp)
+	3  / (tmp)
+3 --> 
+	22  / (exitcond)
+	4  / (!exitcond)
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	3  / true
+22 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%accPopCount_V = alloca i16"   --->   Operation 23 'alloca' 'accPopCount_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%accPopCount_V_1 = alloca i16"   --->   Operation 24 'alloca' 'accPopCount_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([512 x i24]* %thresMem_V, [1 x i8]* @p_str, [15 x i8]* @p_str56, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 25 'specmemcore' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i1* %out_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 26 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i4* %in_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 27 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%inputBuf_V = alloca [128 x i4], align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:88]   --->   Operation 28 'alloca' 'inputBuf_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+ST_1 : Operation 29 [1/1] (1.76ns)   --->   "br label %0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106]   --->   Operation 29 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 1.93>
+ST_2 : Operation 30 [1/1] (0.00ns)   --->   "%in_idx = phi i2 [ 0, %arrayctor.loop4.preheader ], [ %in_idx_3, %1 ]"   --->   Operation 30 'phi' 'in_idx' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 31 [1/1] (0.95ns)   --->   "%tmp = icmp eq i2 %in_idx, -2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106]   --->   Operation 31 'icmp' 'tmp' <Predicate = true> <Delay = 0.95> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)"   --->   Operation 32 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 33 [1/1] (1.56ns)   --->   "%in_idx_3 = add i2 %in_idx, 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106]   --->   Operation 33 'add' 'in_idx_3' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "br i1 %tmp, label %_ZN8ap_fixedILi24ELi16EL9ap_q_mode5EL9ap_o_mode3ELi0EEC1Ei.exit118.0.preheader, label %1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%accPopCount_V_load31 = load i16* %accPopCount_V" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 35 'load' 'accPopCount_V_load31' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 36 [1/1] (0.00ns)   --->   "%accPopCount_V_1_load_6 = load i16* %accPopCount_V_1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 36 'load' 'accPopCount_V_1_load_6' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%tmp_1208 = trunc i2 %in_idx to i1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 37 'trunc' 'tmp_1208' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 38 [1/1] (0.80ns)   --->   "%accPopCount_V_1_0_1 = select i1 %tmp_1208, i16 0, i16 %accPopCount_V_1_load_6" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 38 'select' 'accPopCount_V_1_0_1' <Predicate = (!tmp)> <Delay = 0.80> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.80> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 39 [1/1] (0.80ns)   --->   "%accPopCount_V_0_0_1 = select i1 %tmp_1208, i16 %accPopCount_V_load31, i16 0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 39 'select' 'accPopCount_V_0_0_1' <Predicate = (!tmp)> <Delay = 0.80> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.80> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "store i16 %accPopCount_V_1_0_1, i16* %accPopCount_V_1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 40 'store' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 41 [1/1] (0.00ns)   --->   "store i16 %accPopCount_V_0_0_1, i16* %accPopCount_V" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:111]   --->   Operation 41 'store' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 42 [1/1] (0.00ns)   --->   "br label %0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106]   --->   Operation 42 'br' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 43 [1/1] (0.00ns)   --->   "%accPopCount_V_load = load i16* %accPopCount_V"   --->   Operation 43 'load' 'accPopCount_V_load' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 44 [1/1] (0.00ns)   --->   "%accPopCount_V_1_load = load i16* %accPopCount_V_1"   --->   Operation 44 'load' 'accPopCount_V_1_load' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 45 [1/1] (0.00ns)   --->   "%sf = alloca i32"   --->   Operation 45 'alloca' 'sf' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 46 [1/1] (0.00ns)   --->   "%accPopCount_V_0_0_2 = alloca i16"   --->   Operation 46 'alloca' 'accPopCount_V_0_0_2' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 47 [1/1] (0.00ns)   --->   "%accPopCount_V_1_0_2 = alloca i16"   --->   Operation 47 'alloca' 'accPopCount_V_1_0_2' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 48 [1/1] (1.76ns)   --->   "store i16 %accPopCount_V_1_load, i16* %accPopCount_V_1_0_2"   --->   Operation 48 'store' <Predicate = (tmp)> <Delay = 1.76>
+ST_2 : Operation 49 [1/1] (1.81ns)   --->   "store i16 %accPopCount_V_load, i16* %accPopCount_V_0_0_2"   --->   Operation 49 'store' <Predicate = (tmp)> <Delay = 1.81>
+ST_2 : Operation 50 [1/1] (1.76ns)   --->   "store i32 0, i32* %sf"   --->   Operation 50 'store' <Predicate = (tmp)> <Delay = 1.76>
+ST_2 : Operation 51 [1/1] (1.76ns)   --->   "br label %_ZN8ap_fixedILi24ELi16EL9ap_q_mode5EL9ap_o_mode3ELi0EEC1Ei.exit118.0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127]   --->   Operation 51 'br' <Predicate = (tmp)> <Delay = 1.76>
+
+State 3 <SV = 2> <Delay = 3.40>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%nf = phi i32 [ %p_nf_1, %._crit_edge ], [ 0, %_ZN8ap_fixedILi24ELi16EL9ap_q_mode5EL9ap_o_mode3ELi0EEC1Ei.exit118.0.preheader ]" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:199]   --->   Operation 52 'phi' 'nf' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 53 [1/1] (0.00ns)   --->   "%i7 = phi i16 [ %i, %._crit_edge ], [ 0, %_ZN8ap_fixedILi24ELi16EL9ap_q_mode5EL9ap_o_mode3ELi0EEC1Ei.exit118.0.preheader ]"   --->   Operation 53 'phi' 'i7' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 54 [1/1] (2.42ns)   --->   "%exitcond = icmp eq i16 %i7, -32768" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127]   --->   Operation 54 'icmp' 'exitcond' <Predicate = true> <Delay = 2.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 55 [1/1] (0.00ns)   --->   "%empty_1176 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 32768, i64 32768, i64 32768)"   --->   Operation 55 'speclooptripcount' 'empty_1176' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 56 [1/1] (2.07ns)   --->   "%i = add i16 %i7, 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127]   --->   Operation 56 'add' 'i' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %6, label %2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127]   --->   Operation 57 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 58 [1/1] (0.00ns)   --->   "%sf_load = load i32* %sf" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:156]   --->   Operation 58 'load' 'sf_load' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 59 [1/1] (2.55ns)   --->   "%sf_4 = add i32 1, %sf_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:156]   --->   Operation 59 'add' 'sf_4' <Predicate = (!exitcond)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 3.44>
+ST_4 : Operation 60 [1/1] (2.47ns)   --->   "%tmp_s = icmp eq i32 %nf, 0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:134]   --->   Operation 60 'icmp' 'tmp_s' <Predicate = (!exitcond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 61 [1/1] (0.00ns)   --->   "%sf_load_5 = load i32* %sf" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:138]   --->   Operation 61 'load' 'sf_load_5' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 62 [1/1] (0.00ns)   --->   "br i1 %tmp_s, label %4, label %5" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:134]   --->   Operation 62 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 63 [1/1] (0.00ns) (grouped into LUT with out node tmp_41)   --->   "%tmp_1209 = shl i32 %nf, 6" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 63 'shl' 'tmp_1209' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 64 [1/1] (2.55ns) (out node of the LUT)   --->   "%tmp_41 = add i32 %tmp_1209, %sf_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 64 'add' 'tmp_41' <Predicate = (!exitcond)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 65 [1/1] (2.47ns)   --->   "%tmp_45 = icmp eq i32 %sf_4, 64" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:158]   --->   Operation 65 'icmp' 'tmp_45' <Predicate = (!exitcond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 66 [1/1] (0.00ns)   --->   "br i1 %tmp_45, label %_ZmlILi24ELi16ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0ELi16ELb1EEN13ap_fixed_baseIXT5_EXT5_EXT6_ELS0_5ELS1_3ELi0EE5RTypeIXT_EXT0_EXT1_EE4multERK11ap_int_baseIXT5_EXT6_EERKS2_IXT_EXT0_EXT1_EXT2_EXT3_EXT4_EE.exit.0.0, label %.._crit_edge_crit_edge" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:158]   --->   Operation 66 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 67 [1/1] (1.76ns)   --->   "store i32 %sf_4, i32* %sf" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:156]   --->   Operation 67 'store' <Predicate = (!exitcond & !tmp_45)> <Delay = 1.76>
+ST_4 : Operation 68 [1/1] (1.76ns)   --->   "br label %._crit_edge" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:158]   --->   Operation 68 'br' <Predicate = (!exitcond & !tmp_45)> <Delay = 1.76>
+ST_4 : Operation 69 [1/1] (2.55ns)   --->   "%nf_4 = add i32 %nf, 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:197]   --->   Operation 69 'add' 'nf_4' <Predicate = (!exitcond & tmp_45)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 70 [1/1] (1.76ns)   --->   "store i32 0, i32* %sf"   --->   Operation 70 'store' <Predicate = (!exitcond & tmp_45)> <Delay = 1.76>
+ST_4 : Operation 71 [1/1] (1.76ns)   --->   "br label %._crit_edge" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:198]   --->   Operation 71 'br' <Predicate = (!exitcond & tmp_45)> <Delay = 1.76>
+
+State 5 <SV = 4> <Delay = 3.25>
+ST_5 : Operation 72 [1/1] (0.00ns)   --->   "%tmp_39 = zext i32 %sf_load_5 to i64" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:141]   --->   Operation 72 'zext' 'tmp_39' <Predicate = (!exitcond & !tmp_s)> <Delay = 0.00>
+ST_5 : Operation 73 [1/1] (0.00ns)   --->   "%inputBuf_V_addr_3 = getelementptr [128 x i4]* %inputBuf_V, i64 0, i64 %tmp_39" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:141]   --->   Operation 73 'getelementptr' 'inputBuf_V_addr_3' <Predicate = (!exitcond & !tmp_s)> <Delay = 0.00>
+ST_5 : Operation 74 [2/2] (2.28ns)   --->   "%inputBuf_V_load = load i4* %inputBuf_V_addr_3, align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:141]   --->   Operation 74 'load' 'inputBuf_V_load' <Predicate = (!exitcond & !tmp_s)> <Delay = 2.28> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+ST_5 : Operation 75 [1/1] (2.18ns)   --->   "%tmp_V = call i4 @_ssdm_op_Read.ap_fifo.volatile.i4P(i4* %in_V_V)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:136]   --->   Operation 75 'read' 'tmp_V' <Predicate = (!exitcond & tmp_s)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 0> <FIFO>
+ST_5 : Operation 76 [1/1] (0.00ns)   --->   "%tmp_42 = zext i32 %tmp_41 to i64" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 76 'zext' 'tmp_42' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 77 [1/1] (0.00ns)   --->   "%weightMem_V_addr = getelementptr [32768 x i4]* %weightMem_V, i64 0, i64 %tmp_42" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 77 'getelementptr' 'weightMem_V_addr' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 78 [2/2] (3.25ns)   --->   "%weightMem_V_load = load i4* %weightMem_V_addr, align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 78 'load' 'weightMem_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+ST_5 : Operation 79 [1/1] (0.00ns)   --->   "%tmp_46 = zext i32 %nf to i64" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 79 'zext' 'tmp_46' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_5 : Operation 80 [1/1] (0.00ns)   --->   "%nf_1 = phi i32 [ %nf_4, %_ZmlILi24ELi16ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0ELi16ELb1EEN13ap_fixed_baseIXT5_EXT5_EXT6_ELS0_5ELS1_3ELi0EE5RTypeIXT_EXT0_EXT1_EE4multERK11ap_int_baseIXT5_EXT6_EERKS2_IXT_EXT0_EXT1_EXT2_EXT3_EXT4_EE.exit.0.0 ], [ %nf, %.._crit_edge_crit_edge ]"   --->   Operation 80 'phi' 'nf_1' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 81 [1/1] (2.47ns)   --->   "%tmp_56 = icmp eq i32 %nf_1, 512" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:199]   --->   Operation 81 'icmp' 'tmp_56' <Predicate = (!exitcond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 82 [1/1] (0.69ns)   --->   "%p_nf_1 = select i1 %tmp_56, i32 0, i32 %nf_1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:199]   --->   Operation 82 'select' 'p_nf_1' <Predicate = (!exitcond)> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.80> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 3.25>
+ST_6 : Operation 83 [1/2] (2.28ns)   --->   "%inputBuf_V_load = load i4* %inputBuf_V_addr_3, align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:141]   --->   Operation 83 'load' 'inputBuf_V_load' <Predicate = (!exitcond & !tmp_s)> <Delay = 2.28> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+ST_6 : Operation 84 [1/1] (1.76ns)   --->   "br label %3"   --->   Operation 84 'br' <Predicate = (!exitcond & !tmp_s)> <Delay = 1.76>
+ST_6 : Operation 85 [1/1] (0.00ns)   --->   "%tmp_38 = zext i32 %sf_load_5 to i64" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:138]   --->   Operation 85 'zext' 'tmp_38' <Predicate = (!exitcond & tmp_s)> <Delay = 0.00>
+ST_6 : Operation 86 [1/1] (0.00ns)   --->   "%inputBuf_V_addr = getelementptr [128 x i4]* %inputBuf_V, i64 0, i64 %tmp_38" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:138]   --->   Operation 86 'getelementptr' 'inputBuf_V_addr' <Predicate = (!exitcond & tmp_s)> <Delay = 0.00>
+ST_6 : Operation 87 [1/1] (2.28ns)   --->   "store i4 %tmp_V, i4* %inputBuf_V_addr, align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:138]   --->   Operation 87 'store' <Predicate = (!exitcond & tmp_s)> <Delay = 2.28> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+ST_6 : Operation 88 [1/1] (1.76ns)   --->   "br label %3" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:139]   --->   Operation 88 'br' <Predicate = (!exitcond & tmp_s)> <Delay = 1.76>
+ST_6 : Operation 89 [1/2] (3.25ns)   --->   "%weightMem_V_load = load i4* %weightMem_V_addr, align 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147]   --->   Operation 89 'load' 'weightMem_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+
+State 7 <SV = 6> <Delay = 3.04>
+ST_7 : Operation 90 [1/1] (0.00ns) (grouped into LUT with out node masked_V)   --->   "%p_s = phi i4 [ %tmp_V, %4 ], [ %inputBuf_V_load, %5 ]"   --->   Operation 90 'phi' 'p_s' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 91 [1/1] (0.00ns) (grouped into LUT with out node masked_V)   --->   "%tmp1 = xor i4 %p_s, -1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:148]   --->   Operation 91 'xor' 'tmp1' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 92 [1/1] (0.97ns) (out node of the LUT)   --->   "%masked_V = xor i4 %weightMem_V_load, %tmp1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:148]   --->   Operation 92 'xor' 'masked_V' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 93 [1/1] (0.00ns)   --->   "%tmp_1210 = trunc i4 %masked_V to i1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 93 'trunc' 'tmp_1210' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 94 [1/1] (0.00ns)   --->   "%tmp_1211 = call i1 @_ssdm_op_BitSelect.i1.i4.i32(i4 %masked_V, i32 1)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 94 'bitselect' 'tmp_1211' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 95 [1/1] (0.00ns)   --->   "%tmp_i_cast = zext i1 %tmp_1210 to i2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 95 'zext' 'tmp_i_cast' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 96 [1/1] (0.00ns)   --->   "%tmp_365_i_cast = zext i1 %tmp_1211 to i2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 96 'zext' 'tmp_365_i_cast' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 97 [1/1] (0.00ns)   --->   "%tmp_1212 = call i1 @_ssdm_op_BitSelect.i1.i4.i32(i4 %masked_V, i32 2)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 97 'bitselect' 'tmp_1212' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 98 [1/1] (0.00ns)   --->   "%tmp_366_i_cast = zext i1 %tmp_1212 to i2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 98 'zext' 'tmp_366_i_cast' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 99 [1/1] (0.00ns)   --->   "%tmp_1213 = call i1 @_ssdm_op_BitSelect.i1.i4.i32(i4 %masked_V, i32 3)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 99 'bitselect' 'tmp_1213' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 100 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp2 = add i2 %tmp_365_i_cast, %tmp_366_i_cast" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 100 'add' 'tmp2' <Predicate = true> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.03> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_7 : Operation 101 [1/1] (2.07ns) (root node of TernaryAdder)   --->   "%tmp_368_i = add i2 %tmp2, %tmp_i_cast" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 101 'add' 'tmp_368_i' <Predicate = true> <Delay = 2.07> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.03> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+
+State 8 <SV = 7> <Delay = 1.56>
+ST_8 : Operation 102 [1/1] (0.00ns)   --->   "%tmp_368_i_cast = zext i2 %tmp_368_i to i3" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 102 'zext' 'tmp_368_i_cast' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 103 [1/1] (0.00ns)   --->   "%tmp_369_i_cast = zext i1 %tmp_1213 to i3" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 103 'zext' 'tmp_369_i_cast' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 104 [1/1] (1.56ns)   --->   "%pct_V_i = add i3 %tmp_368_i_cast, %tmp_369_i_cast" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 104 'add' 'pct_V_i' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 9 <SV = 8> <Delay = 3.81>
+ST_9 : Operation 105 [1/1] (0.00ns)   --->   "%accPopCount_V_0_0_2_s = load i16* %accPopCount_V_0_0_2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 105 'load' 'accPopCount_V_0_0_2_s' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 106 [1/1] (0.00ns)   --->   "%tmp_i = call i4 @_ssdm_op_BitConcatenate.i4.i3.i1(i3 %pct_V_i, i1 false)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 106 'bitconcatenate' 'tmp_i' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 107 [1/1] (1.73ns)   --->   "%agg_result_V_i = add i4 -4, %tmp_i" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 107 'add' 'agg_result_V_i' <Predicate = true> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 108 [1/1] (0.00ns)   --->   "%agg_result_V_i_cast = sext i4 %agg_result_V_i to i16" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 108 'sext' 'agg_result_V_i_cast' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 109 [1/1] (2.07ns)   --->   "%tmp_44 = add i16 %accPopCount_V_0_0_2_s, %agg_result_V_i_cast" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 109 'add' 'tmp_44' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 110 [1/1] (1.81ns)   --->   "store i16 0, i16* %accPopCount_V_0_0_2"   --->   Operation 110 'store' <Predicate = (!exitcond & tmp_45)> <Delay = 1.81>
+
+State 10 <SV = 9> <Delay = 3.89>
+ST_10 : Operation 111 [1/1] (1.81ns)   --->   "store i16 %tmp_44, i16* %accPopCount_V_0_0_2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150]   --->   Operation 111 'store' <Predicate = (!exitcond & !tmp_45)> <Delay = 1.81>
+ST_10 : Operation 112 [1/1] (0.00ns)   --->   "%tmp_51 = sext i16 %tmp_44 to i24" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 112 'sext' 'tmp_51' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_10 : Operation 113 [1/1] (0.00ns)   --->   "%means_in6_V_0_load = load i24* @means_in6_V_0, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 113 'load' 'means_in6_V_0_load' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_10 : Operation 114 [3/3] (3.89ns) (root node of the DSP)   --->   "%tmp_57 = mul i24 %tmp_51, %means_in6_V_0_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 114 'mul' 'tmp_57' <Predicate = (!exitcond & tmp_45)> <Delay = 3.89> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+
+State 11 <SV = 10> <Delay = 3.89>
+ST_11 : Operation 115 [1/1] (0.00ns)   --->   "%accPopCount_V_1_0_2_s = load i16* %accPopCount_V_1_0_2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 115 'load' 'accPopCount_V_1_0_2_s' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_11 : Operation 116 [2/3] (3.89ns) (root node of the DSP)   --->   "%tmp_57 = mul i24 %tmp_51, %means_in6_V_0_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 116 'mul' 'tmp_57' <Predicate = (!exitcond & tmp_45)> <Delay = 3.89> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_11 : Operation 117 [1/1] (0.00ns)   --->   "%tmp_132_1 = sext i16 %accPopCount_V_1_0_2_s to i24" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 117 'sext' 'tmp_132_1' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_11 : Operation 118 [1/1] (0.00ns)   --->   "%means_in6_V_1_load = load i24* @means_in6_V_1, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 118 'load' 'means_in6_V_1_load' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_11 : Operation 119 [3/3] (1.05ns) (grouped into DSP with root node tmp_134_1)   --->   "%tmp_133_1 = mul i24 %tmp_132_1, %means_in6_V_1_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 119 'mul' 'tmp_133_1' <Predicate = (!exitcond & tmp_45)> <Delay = 1.05> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_11 : Operation 120 [1/1] (1.76ns)   --->   "store i16 0, i16* %accPopCount_V_1_0_2"   --->   Operation 120 'store' <Predicate = (!exitcond & tmp_45)> <Delay = 1.76>
+
+State 12 <SV = 11> <Delay = 3.25>
+ST_12 : Operation 121 [1/3] (0.00ns) (root node of the DSP)   --->   "%tmp_57 = mul i24 %tmp_51, %means_in6_V_0_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 121 'mul' 'tmp_57' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_12 : Operation 122 [2/3] (1.05ns) (grouped into DSP with root node tmp_134_1)   --->   "%tmp_133_1 = mul i24 %tmp_132_1, %means_in6_V_1_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 122 'mul' 'tmp_133_1' <Predicate = (!exitcond & tmp_45)> <Delay = 1.05> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_12 : Operation 123 [1/1] (0.00ns)   --->   "%alphaMem_V_addr = getelementptr [512 x i24]* %alphaMem_V, i64 0, i64 %tmp_46" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 123 'getelementptr' 'alphaMem_V_addr' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_12 : Operation 124 [2/2] (3.25ns)   --->   "%alphaMem_V_load = load i24* %alphaMem_V_addr, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 124 'load' 'alphaMem_V_load' <Predicate = (!exitcond & tmp_45)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+
+State 13 <SV = 12> <Delay = 3.25>
+ST_13 : Operation 125 [1/3] (0.00ns) (grouped into DSP with root node tmp_134_1)   --->   "%tmp_133_1 = mul i24 %tmp_132_1, %means_in6_V_1_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 125 'mul' 'tmp_133_1' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_13 : Operation 126 [1/1] (3.02ns) (root node of the DSP)   --->   "%tmp_134_1 = add i24 %tmp_57, %tmp_133_1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165]   --->   Operation 126 'add' 'tmp_134_1' <Predicate = (!exitcond & tmp_45)> <Delay = 3.02> <Core = "DSP48">   --->   Core 65 'DSP48' <Latency = 2> <II = 1> <Delay = 3.88> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_13 : Operation 127 [1/2] (3.25ns)   --->   "%alphaMem_V_load = load i24* %alphaMem_V_addr, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 127 'load' 'alphaMem_V_load' <Predicate = (!exitcond & tmp_45)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+
+State 14 <SV = 13> <Delay = 3.95>
+ST_14 : Operation 128 [1/1] (0.00ns)   --->   "%tmp_47 = sext i24 %alphaMem_V_load to i48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 128 'sext' 'tmp_47' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_14 : Operation 129 [1/1] (0.00ns)   --->   "%tmp_48 = sext i24 %tmp_134_1 to i48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 129 'sext' 'tmp_48' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_14 : Operation 130 [4/4] (3.95ns)   --->   "%tmp_49 = mul nsw i48 %tmp_47, %tmp_48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 130 'mul' 'tmp_49' <Predicate = (!exitcond & tmp_45)> <Delay = 3.95> <Core = "MulnS">   --->   Core 17 'MulnS' <Latency = 3> <II = 1> <Delay = 3.95> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 14> <Delay = 3.95>
+ST_15 : Operation 131 [3/4] (3.95ns)   --->   "%tmp_49 = mul nsw i48 %tmp_47, %tmp_48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 131 'mul' 'tmp_49' <Predicate = (!exitcond & tmp_45)> <Delay = 3.95> <Core = "MulnS">   --->   Core 17 'MulnS' <Latency = 3> <II = 1> <Delay = 3.95> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 16 <SV = 15> <Delay = 3.95>
+ST_16 : Operation 132 [2/4] (3.95ns)   --->   "%tmp_49 = mul nsw i48 %tmp_47, %tmp_48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 132 'mul' 'tmp_49' <Predicate = (!exitcond & tmp_45)> <Delay = 3.95> <Core = "MulnS">   --->   Core 17 'MulnS' <Latency = 3> <II = 1> <Delay = 3.95> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 133 [1/1] (0.00ns)   --->   "%thresMem_V_addr = getelementptr [512 x i24]* %thresMem_V, i64 0, i64 %tmp_46" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 133 'getelementptr' 'thresMem_V_addr' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_16 : Operation 134 [2/2] (2.56ns)   --->   "%thresMem_V_load = load i24* %thresMem_V_addr, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 134 'load' 'thresMem_V_load' <Predicate = (!exitcond & tmp_45)> <Delay = 2.56> <Core = "RAM_S2P_LUTRAM">   --->   Core 50 'RAM_S2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 2.56> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+
+State 17 <SV = 16> <Delay = 3.95>
+ST_17 : Operation 135 [1/4] (3.95ns)   --->   "%tmp_49 = mul nsw i48 %tmp_47, %tmp_48" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 135 'mul' 'tmp_49' <Predicate = (!exitcond & tmp_45)> <Delay = 3.95> <Core = "MulnS">   --->   Core 17 'MulnS' <Latency = 3> <II = 1> <Delay = 3.95> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 136 [1/2] (2.56ns)   --->   "%thresMem_V_load = load i24* %thresMem_V_addr, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 136 'load' 'thresMem_V_load' <Predicate = (!exitcond & tmp_45)> <Delay = 2.56> <Core = "RAM_S2P_LUTRAM">   --->   Core 50 'RAM_S2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 2.56> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 24> <Depth = 512> <RAM>
+
+State 18 <SV = 17> <Delay = 3.10>
+ST_18 : Operation 137 [1/1] (0.00ns)   --->   "%tmp_50 = zext i48 %tmp_49 to i49" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 137 'zext' 'tmp_50' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_18 : Operation 138 [1/1] (0.00ns)   --->   "%tmp_52 = call i32 @_ssdm_op_BitConcatenate.i32.i24.i8(i24 %thresMem_V_load, i8 0)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 138 'bitconcatenate' 'tmp_52' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_18 : Operation 139 [1/1] (0.00ns)   --->   "%tmp_52_cast3 = zext i32 %tmp_52 to i49" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 139 'zext' 'tmp_52_cast3' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_18 : Operation 140 [1/1] (3.10ns)   --->   "%tmp_53 = add nsw i49 %tmp_52_cast3, %tmp_50" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 140 'add' 'tmp_53' <Predicate = (!exitcond & tmp_45)> <Delay = 3.10> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_18 : Operation 141 [1/1] (0.00ns)   --->   "%tmp_55 = call i24 @_ssdm_op_PartSelect.i24.i49.i32.i32(i49 %tmp_53, i32 8, i32 31)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175]   --->   Operation 141 'partselect' 'tmp_55' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+
+State 19 <SV = 18> <Delay = 2.45>
+ST_19 : Operation 142 [1/1] (2.45ns)   --->   "%tmp_V_16 = icmp sgt i24 %tmp_55, 0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:186]   --->   Operation 142 'icmp' 'tmp_V_16' <Predicate = (!exitcond & tmp_45)> <Delay = 2.45> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_19 : Operation 143 [1/1] (0.00ns)   --->   "%means_out6_V_0_load = load i24* @means_out6_V_0, align 4" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:187]   --->   Operation 143 'load' 'means_out6_V_0_load' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00>
+ST_19 : Operation 144 [1/1] (2.31ns)   --->   "%tmp_58 = sub i24 %tmp_55, %means_out6_V_0_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:187]   --->   Operation 144 'sub' 'tmp_58' <Predicate = (!exitcond & tmp_45)> <Delay = 2.31> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_19 : Operation 145 [1/1] (2.31ns)   --->   "%addconv = add i24 %tmp_55, %means_out6_V_0_load" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:187]   --->   Operation 145 'add' 'addconv' <Predicate = (!exitcond & tmp_45)> <Delay = 2.31> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 20 <SV = 19> <Delay = 2.45>
+ST_20 : Operation 146 [1/1] (0.00ns) (grouped into LUT with out node tmp_V_17)   --->   "%accResidual_0_V = select i1 %tmp_V_16, i24 %tmp_58, i24 %addconv" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:187]   --->   Operation 146 'select' 'accResidual_0_V' <Predicate = (!exitcond & tmp_45)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.80> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_20 : Operation 147 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i1P(i1* %out_V_V, i1 %tmp_V_16)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:189]   --->   Operation 147 'write' <Predicate = (!exitcond & tmp_45)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 0> <FIFO>
+ST_20 : Operation 148 [1/1] (2.45ns) (out node of the LUT)   --->   "%tmp_V_17 = icmp sgt i24 %accResidual_0_V, 0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:186]   --->   Operation 148 'icmp' 'tmp_V_17' <Predicate = (!exitcond & tmp_45)> <Delay = 2.45> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+
+State 21 <SV = 20> <Delay = 2.18>
+ST_21 : Operation 149 [1/1] (0.00ns)   --->   "%tmp_43 = call i32 (...)* @_ssdm_op_SpecRegionBegin([14 x i8]* @p_str88)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:128]   --->   Operation 149 'specregionbegin' 'tmp_43' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_21 : Operation 150 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:129]   --->   Operation 150 'specpipeline' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_21 : Operation 151 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i1P(i1* %out_V_V, i1 %tmp_V_17)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:189]   --->   Operation 151 'write' <Predicate = (!exitcond & tmp_45)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 0> <FIFO>
+ST_21 : Operation 152 [1/1] (0.00ns)   --->   "%empty_1177 = call i32 (...)* @_ssdm_op_SpecRegionEnd([14 x i8]* @p_str88, i32 %tmp_43)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:205]   --->   Operation 152 'specregionend' 'empty_1177' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_21 : Operation 153 [1/1] (0.00ns)   --->   "br label %_ZN8ap_fixedILi24ELi16EL9ap_q_mode5EL9ap_o_mode3ELi0EEC1Ei.exit118.0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127]   --->   Operation 153 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+
+State 22 <SV = 3> <Delay = 0.00>
+ST_22 : Operation 154 [1/1] (0.00ns)   --->   "ret void" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:206]   --->   Operation 154 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('in_idx') with incoming values : ('in_idx', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106) [17]  (1.77 ns)
+
+ <State 2>: 1.93ns
+The critical path consists of the following:
+	'icmp' operation ('tmp', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:106) [18]  (0.959 ns)
+	blocking operation 0.975 ns on control path)
+
+ <State 3>: 3.4ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:127) [44]  (2.43 ns)
+	blocking operation 0.975 ns on control path)
+
+ <State 4>: 3.45ns
+The critical path consists of the following:
+	'icmp' operation ('tmp_45', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:158) [93]  (2.47 ns)
+	blocking operation 0.975 ns on control path)
+
+ <State 5>: 3.25ns
+The critical path consists of the following:
+	'getelementptr' operation ('weightMem_V_addr', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147) [72]  (0 ns)
+	'load' operation ('weightMem_V_load', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147) on array 'weightMem_V' [73]  (3.25 ns)
+
+ <State 6>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('weightMem_V_load', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:147) on array 'weightMem_V' [73]  (3.25 ns)
+
+ <State 7>: 3.04ns
+The critical path consists of the following:
+	'phi' operation ('tmp.V') with incoming values : ('inputBuf_V_load', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:141) ('tmp.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:136) [66]  (0 ns)
+	'xor' operation ('tmp1', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:148) [74]  (0 ns)
+	'xor' operation ('masked.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:148) [75]  (0.975 ns)
+	'add' operation ('tmp_368_i', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:55->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150) [84]  (2.07 ns)
+
+ <State 8>: 1.56ns
+The critical path consists of the following:
+	'add' operation ('pct_V_i', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150) [87]  (1.56 ns)
+
+ <State 9>: 3.81ns
+The critical path consists of the following:
+	'add' operation ('agg_result_V_i', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:57->/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150) [89]  (1.74 ns)
+	'add' operation ('tmp_44', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:150) [91]  (2.08 ns)
+
+ <State 10>: 3.89ns
+The critical path consists of the following:
+	'mul' operation of DSP[103] ('tmp_57', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165) [103]  (3.89 ns)
+
+ <State 11>: 3.89ns
+The critical path consists of the following:
+	'mul' operation of DSP[103] ('tmp_57', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:165) [103]  (3.89 ns)
+
+ <State 12>: 3.25ns
+The critical path consists of the following:
+	'getelementptr' operation ('alphaMem_V_addr', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [109]  (0 ns)
+	'load' operation ('alphaMem_V_load', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) on array 'alphaMem_V' [110]  (3.25 ns)
+
+ <State 13>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('alphaMem_V_load', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) on array 'alphaMem_V' [110]  (3.25 ns)
+
+ <State 14>: 3.95ns
+The critical path consists of the following:
+	'mul' operation ('tmp_49', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [113]  (3.95 ns)
+
+ <State 15>: 3.95ns
+The critical path consists of the following:
+	'mul' operation ('tmp_49', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [113]  (3.95 ns)
+
+ <State 16>: 3.95ns
+The critical path consists of the following:
+	'mul' operation ('tmp_49', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [113]  (3.95 ns)
+
+ <State 17>: 3.95ns
+The critical path consists of the following:
+	'mul' operation ('tmp_49', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [113]  (3.95 ns)
+
+ <State 18>: 3.1ns
+The critical path consists of the following:
+	'add' operation ('tmp_53', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:175) [119]  (3.1 ns)
+
+ <State 19>: 2.45ns
+The critical path consists of the following:
+	'icmp' operation ('tmp.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:186) [121]  (2.45 ns)
+
+ <State 20>: 2.45ns
+The critical path consists of the following:
+	'select' operation ('accResidual[0].V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:187) [125]  (0 ns)
+	'icmp' operation ('tmp.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:186) [127]  (2.45 ns)
+
+ <State 21>: 2.19ns
+The critical path consists of the following:
+	fifo write on port 'out_V_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/matrixvector.h:189) [128]  (2.19 ns)
+
+ <State 22>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

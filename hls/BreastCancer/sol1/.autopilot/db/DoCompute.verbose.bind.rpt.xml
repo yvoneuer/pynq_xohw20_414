@@ -1,0 +1,83 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'DoCompute'" level="0">
+<item name = "Date">Tue Jul  7 16:25:51 2020
+</item>
+<item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
+<item name = "Project">CIFAR10</item>
+<item name = "Solution">sol1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg400-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00, 6.981, 0.62</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">65779, 65779, 65559, 65559, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_StreamingMatrixVecto_4_fu_942">StreamingMatrixVecto_4, 56476, 56476, 56476, 56476, none</column>
+<column name="grp_StreamingMatrixVecto_7_fu_1146">StreamingMatrixVecto_7, 57628, 57628, 57628, 57628, none</column>
+<column name="grp_StreamingMatrixVecto_6_fu_1254">StreamingMatrixVecto_6, 41500, 41500, 41500, 41500, none</column>
+<column name="grp_StreamingFxdMatrixVe_fu_1362">StreamingFxdMatrixVe, 64816, 64816, 64816, 64816, none</column>
+<column name="grp_StreamingMaxPool_Bat_1_fu_1464">StreamingMaxPool_Bat_1, 293, 293, 293, 293, none</column>
+<column name="grp_StreamingMatrixVecto_3_fu_1470">StreamingMatrixVecto_3, 41500, 41500, 41500, 41500, none</column>
+<column name="grp_StreamingMaxPool_Bat_fu_1506">StreamingMaxPool_Bat, 2075, 2075, 2075, 2075, none</column>
+<column name="grp_StreamingConvolution_3_fu_1512">StreamingConvolution_3, 40, 40, 40, 40, none</column>
+<column name="grp_StreamingMatrixVecto_fu_1518">StreamingMatrixVecto, 24590, 24590, 24590, 24590, none</column>
+<column name="grp_StreamingConvolution_5_fu_1536">StreamingConvolution_5, 1876, 1876, 1876, 1876, none</column>
+<column name="grp_StreamingConvolution_4_fu_1542">StreamingConvolution_4, 196, 196, 196, 196, none</column>
+<column name="grp_Resid_StreamingDataW_6_fu_1548">Resid_StreamingDataW_6, 132, 132, 132, 132, none</column>
+<column name="grp_Resid_StreamingDataW_7_fu_1554">Resid_StreamingDataW_7, 148, 148, 148, 148, none</column>
+<column name="grp_StreamingConvolution_fu_1560">StreamingConvolution, 14296, 14296, 14296, 14296, none</column>
+<column name="grp_StreamingConvolution_1_fu_1566">StreamingConvolution_1, 2680, 2680, 2680, 2680, none</column>
+<column name="grp_StreamingMatrixVecto_5_fu_1572">StreamingMatrixVecto_5, 36890, 36890, 36890, 36890, none</column>
+<column name="grp_StreamingConvolution_2_fu_1590">StreamingConvolution_2, 16396, 16396, 16396, 16396, none</column>
+<column name="grp_StreamingMatrixVecto_1_fu_1596">StreamingMatrixVecto_1, 65558, 65558, 65558, 65558, none</column>
+<column name="grp_StreamingMatrixVecto_2_fu_1614">StreamingMatrixVecto_2, 65557, 65557, 65557, 65557, none</column>
+<column name="grp_Resid_StreamingDataW_10_fu_1632">Resid_StreamingDataW_10, 515, 515, 515, 515, none</column>
+<column name="grp_Resid_StreamingDataW_4_fu_1638">Resid_StreamingDataW_4, 1155, 1155, 1155, 1155, none</column>
+<column name="grp_Resid_StreamingDataW_14_fu_1644">Resid_StreamingDataW_14, 7204, 7204, 7204, 7204, none</column>
+<column name="grp_Resid_StreamingDataW_15_fu_1650">Resid_StreamingDataW_15, 652, 652, 652, 652, none</column>
+<column name="grp_StreamingDataWidthCo_2_fu_1656">StreamingDataWidthCo_2, 1027, 1027, 1027, 1027, none</column>
+<column name="grp_Resid_StreamingDataW_3_fu_1662">Resid_StreamingDataW_3, 1028, 1028, 1028, 1028, none</column>
+<column name="grp_Resid_StreamingDataW_fu_1668">Resid_StreamingDataW, 132, 132, 132, 132, none</column>
+<column name="grp_Resid_StreamingDataW_13_fu_1674">Resid_StreamingDataW_13, 2307, 2307, 2307, 2307, none</column>
+<column name="grp_Resid_StreamingDataW_12_fu_1680">Resid_StreamingDataW_12, 1603, 1603, 1603, 1603, none</column>
+<column name="grp_Resid_StreamingDataW_1_fu_1686">Resid_StreamingDataW_1, 28228, 28228, 28228, 28228, none</column>
+<column name="grp_Resid_StreamingDataW_2_fu_1692">Resid_StreamingDataW_2, 5188, 5188, 5188, 5188, none</column>
+<column name="grp_Resid_StreamingDataW_9_fu_1698">Resid_StreamingDataW_9, 1027, 1027, 1027, 1027, none</column>
+<column name="grp_Resid_StreamingDataW_8_fu_1704">Resid_StreamingDataW_8, 1027, 1027, 1027, 1027, none</column>
+<column name="grp_Resid_StreamingDataW_11_fu_1710">Resid_StreamingDataW_11, 7203, 7203, 7203, 7203, none</column>
+<column name="grp_StreamingDataWidthCo_1_fu_1716">StreamingDataWidthCo_1, 386, 386, 386, 386, none</column>
+<column name="grp_Resid_StreamingDataW_5_fu_1722">Resid_StreamingDataW_5, 3139, 3139, 3139, 3139, none</column>
+<column name="grp_Mem2Stream_Batch10_fu_1728">Mem2Stream_Batch10, 394, 394, 394, 394, none</column>
+<column name="grp_Stream2Mem_Batch_fu_1740">Stream2Mem_Batch, 25, 25, 25, 25, none</column>
+<column name="grp_StreamingDataWidthCo_fu_1748">StreamingDataWidthCo, 18, 18, 18, 18, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

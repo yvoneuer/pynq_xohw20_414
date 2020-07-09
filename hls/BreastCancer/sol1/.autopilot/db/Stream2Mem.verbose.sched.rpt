@@ -1,0 +1,213 @@
+
+
+================================================================
+== Vivado HLS Report for 'Stream2Mem'
+================================================================
+* Date:           Tue Jul  7 16:25:09 2020
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        CIFAR10
+* Solution:       sol1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|     4.375|        0.62|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   23|   23|   23|   23|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |   17|   17|         3|          1|          1|    16|    yes   |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 9
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 3, States = { 2 3 4 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	5  / (tmp)
+	3  / (!tmp)
+3 --> 
+	4  / true
+4 --> 
+	2  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.37>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%out_V_offset_read = call i61 @_ssdm_op_Read.ap_auto.i61(i61 %out_V_offset)"   --->   Operation 10 'read' 'out_V_offset_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%out_V_offset_cast1 = zext i61 %out_V_offset_read to i64"   --->   Operation 11 'zext' 'out_V_offset_cast1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%out_V_addr = getelementptr i64* %out_V, i64 %out_V_offset_cast1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:63]   --->   Operation 12 'getelementptr' 'out_V_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %in_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 13 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %out_V, [6 x i8]* @p_str59, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 256, [8 x i8]* @p_str60, [6 x i8]* @p_str61, [1 x i8]* @p_str, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 14 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (4.37ns)   --->   "%out_V_addr_wr_req = call i1 @_ssdm_op_WriteReq.m_axi.i64P(i64* %out_V_addr, i32 16)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 15 'writereq' 'out_V_addr_wr_req' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_1 : Operation 16 [1/1] (1.76ns)   --->   "br label %1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 16 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 1.78>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%i = phi i5 [ 0, %0 ], [ %i_6, %2 ]"   --->   Operation 17 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (1.36ns)   --->   "%tmp = icmp eq i5 %i, -16" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 18 'icmp' 'tmp' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 16, i64 16, i64 16)"   --->   Operation 19 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (1.78ns)   --->   "%i_6 = add i5 %i, 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 20 'add' 'i_6' <Predicate = true> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %tmp, label %3, label %2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 21 'br' <Predicate = true> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.18>
+ST_3 : Operation 22 [1/1] (2.18ns)   --->   "%tmp_V = call i64 @_ssdm_op_Read.ap_fifo.volatile.i64P(i64* %in_V_V)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:70]   --->   Operation 22 'read' 'tmp_V' <Predicate = (!tmp)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 64> <Depth = 0> <FIFO>
+
+State 4 <SV = 3> <Delay = 4.37>
+ST_4 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_s = call i32 (...)* @_ssdm_op_SpecRegionBegin([14 x i8]* @p_str63)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 23 'specregionbegin' 'tmp_s' <Predicate = (!tmp)> <Delay = 0.00>
+ST_4 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:69]   --->   Operation 24 'specpipeline' <Predicate = (!tmp)> <Delay = 0.00>
+ST_4 : Operation 25 [1/1] (4.37ns)   --->   "call void @_ssdm_op_Write.m_axi.i64P(i64* %out_V_addr, i64 %tmp_V, i8 -1)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 25 'write' <Predicate = (!tmp)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_4 : Operation 26 [1/1] (0.00ns)   --->   "%empty_1217 = call i32 (...)* @_ssdm_op_SpecRegionEnd([14 x i8]* @p_str63, i32 %tmp_s)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:72]   --->   Operation 26 'specregionend' 'empty_1217' <Predicate = (!tmp)> <Delay = 0.00>
+ST_4 : Operation 27 [1/1] (0.00ns)   --->   "br label %1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68]   --->   Operation 27 'br' <Predicate = (!tmp)> <Delay = 0.00>
+
+State 5 <SV = 2> <Delay = 4.37>
+ST_5 : Operation 28 [5/5] (4.37ns)   --->   "%out_V_addr_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_V_addr)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 28 'writeresp' 'out_V_addr_wr_resp' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 6 <SV = 3> <Delay = 4.37>
+ST_6 : Operation 29 [4/5] (4.37ns)   --->   "%out_V_addr_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_V_addr)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 29 'writeresp' 'out_V_addr_wr_resp' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 7 <SV = 4> <Delay = 4.37>
+ST_7 : Operation 30 [3/5] (4.37ns)   --->   "%out_V_addr_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_V_addr)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 30 'writeresp' 'out_V_addr_wr_resp' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 8 <SV = 5> <Delay = 4.37>
+ST_8 : Operation 31 [2/5] (4.37ns)   --->   "%out_V_addr_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_V_addr)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 31 'writeresp' 'out_V_addr_wr_resp' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 9 <SV = 6> <Delay = 4.37>
+ST_9 : Operation 32 [1/5] (4.37ns)   --->   "%out_V_addr_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_V_addr)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71]   --->   Operation 32 'writeresp' 'out_V_addr_wr_resp' <Predicate = true> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_9 : Operation 33 [1/1] (0.00ns)   --->   "ret void" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:73]   --->   Operation 33 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 4.38ns
+The critical path consists of the following:
+	wire read on port 'out_V_offset' [4]  (0 ns)
+	'getelementptr' operation ('out_V_addr', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:63) [6]  (0 ns)
+	bus request on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [9]  (4.38 ns)
+
+ <State 2>: 1.78ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68) [12]  (0 ns)
+	'add' operation ('i', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:68) [15]  (1.78 ns)
+
+ <State 3>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'in_V_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:70) [20]  (2.19 ns)
+
+ <State 4>: 4.38ns
+The critical path consists of the following:
+	bus write on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [21]  (4.38 ns)
+
+ <State 5>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [25]  (4.38 ns)
+
+ <State 6>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [25]  (4.38 ns)
+
+ <State 7>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [25]  (4.38 ns)
+
+ <State 8>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [25]  (4.38 ns)
+
+ <State 9>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/dma.h:71) [25]  (4.38 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

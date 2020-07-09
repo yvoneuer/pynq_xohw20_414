@@ -1,0 +1,181 @@
+
+
+================================================================
+== Vivado HLS Report for 'StreamingDataWidthCo_2'
+================================================================
+* Date:           Tue Jul  7 16:23:35 2020
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        CIFAR10
+* Solution:       sol1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|     5.723|        0.62|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  1027|  1027|  1027|  1027|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+------+------+----------+-----------+-----------+------+----------+
+        |          |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |  1025|  1025|         3|          1|          1|  1024|    yes   |
+        +----------+------+------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 3, States = { 2 3 4 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	5  / (exitcond)
+	3  / (!exitcond)
+3 --> 
+	4  / true
+4 --> 
+	2  / true
+5 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i24* %out_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 6 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i192* %in_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 7 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (1.76ns)   --->   "br label %1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 8 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 5.72>
+ST_2 : Operation 9 [1/1] (0.00ns)   --->   "%p_3 = phi i168 [ 0, %0 ], [ %r_V_cast, %._crit_edge ]" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:112]   --->   Operation 9 'phi' 'p_3' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 10 [1/1] (0.00ns)   --->   "%o = phi i32 [ 0, %0 ], [ %p_s, %._crit_edge ]" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116]   --->   Operation 10 'phi' 'o' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 11 [1/1] (0.00ns)   --->   "%t = phi i11 [ 0, %0 ], [ %t_1, %._crit_edge ]"   --->   Operation 11 'phi' 't' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 12 [1/1] (1.88ns)   --->   "%exitcond = icmp eq i11 %t, -1024" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 12 'icmp' 'exitcond' <Predicate = true> <Delay = 1.88> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 1024, i64 1024, i64 1024)"   --->   Operation 13 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 14 [1/1] (1.63ns)   --->   "%t_1 = add i11 %t, 1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 14 'add' 't_1' <Predicate = true> <Delay = 1.63> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %4, label %2" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 15 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 16 [1/1] (2.47ns)   --->   "%tmp = icmp eq i32 %o, 0" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:106]   --->   Operation 16 'icmp' 'tmp' <Predicate = (!exitcond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 17 [1/1] (2.55ns)   --->   "%o_1 = add i32 1, %o" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:114]   --->   Operation 17 'add' 'o_1' <Predicate = (!exitcond)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 18 [1/1] (2.47ns)   --->   "%tmp_s = icmp eq i32 %o_1, 8" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116]   --->   Operation 18 'icmp' 'tmp_s' <Predicate = (!exitcond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 19 [1/1] (0.69ns)   --->   "%p_s = select i1 %tmp_s, i32 0, i32 %o_1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116]   --->   Operation 19 'select' 'p_s' <Predicate = (!exitcond)> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+State 3 <SV = 2> <Delay = 2.18>
+ST_3 : Operation 20 [1/1] (2.18ns)   --->   "%tmp_V_22 = call i192 @_ssdm_op_Read.ap_fifo.volatile.i192P(i192* %in_V_V)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:107]   --->   Operation 20 'read' 'tmp_V_22' <Predicate = (!exitcond & tmp)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 24> <Depth = 0> <FIFO>
+ST_3 : Operation 21 [1/1] (1.76ns)   --->   "br label %._crit_edge" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:107]   --->   Operation 21 'br' <Predicate = (!exitcond & tmp)> <Delay = 1.76>
+
+State 4 <SV = 3> <Delay = 3.95>
+ST_4 : Operation 22 [1/1] (0.00ns)   --->   "%p_3_cast = zext i168 %p_3 to i192" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 22 'zext' 'p_3_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_135 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str210)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 23 'specregionbegin' 'tmp_135' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:104]   --->   Operation 24 'specpipeline' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 25 [1/1] (1.76ns)   --->   "br i1 %tmp, label %3, label %._crit_edge" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:106]   --->   Operation 25 'br' <Predicate = (!exitcond)> <Delay = 1.76>
+ST_4 : Operation 26 [1/1] (0.00ns)   --->   "%p_Val2_s = phi i192 [ %tmp_V_22, %3 ], [ %p_3_cast, %2 ]"   --->   Operation 26 'phi' 'p_Val2_s' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 27 [1/1] (0.00ns)   --->   "%eo_V = trunc i192 %p_Val2_s to i24" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:109]   --->   Operation 27 'trunc' 'eo_V' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 28 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i24P(i24* %out_V_V, i24 %eo_V)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:110]   --->   Operation 28 'write' <Predicate = (!exitcond)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 24> <Depth = 0> <FIFO>
+ST_4 : Operation 29 [1/1] (0.00ns)   --->   "%r_V_cast = call i168 @_ssdm_op_PartSelect.i168.i192.i32.i32(i192 %p_Val2_s, i32 24, i32 191)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:112]   --->   Operation 29 'partselect' 'r_V_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 30 [1/1] (0.00ns)   --->   "%empty_1188 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str210, i32 %tmp_135)" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:119]   --->   Operation 30 'specregionend' 'empty_1188' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 31 [1/1] (0.00ns)   --->   "br label %1" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103]   --->   Operation 31 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+
+State 5 <SV = 2> <Delay = 0.00>
+ST_5 : Operation 32 [1/1] (0.00ns)   --->   "ret void" [/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:150]   --->   Operation 32 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('p_3', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:112) with incoming values : ('r_V_cast', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:112) [7]  (1.77 ns)
+
+ <State 2>: 5.72ns
+The critical path consists of the following:
+	'phi' operation ('o', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116) with incoming values : ('p_s', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116) [8]  (0 ns)
+	'add' operation ('o', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:114) [28]  (2.55 ns)
+	'icmp' operation ('tmp_s', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116) [29]  (2.47 ns)
+	'select' operation ('p_s', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:116) [30]  (0.698 ns)
+
+ <State 3>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'in_V_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:107) [21]  (2.19 ns)
+
+ <State 4>: 3.96ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('ei.V') with incoming values : ('p_3_cast', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103) ('tmp.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:107) [24]  (1.77 ns)
+	'phi' operation ('ei.V') with incoming values : ('p_3_cast', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:103) ('tmp.V', /home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:107) [24]  (0 ns)
+	fifo write on port 'out_V_V' (/home/yangyuan/下载/ReBNet/bnn/src/library/hls/streamtools.h:110) [26]  (2.19 ns)
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
